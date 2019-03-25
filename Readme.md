@@ -1,6 +1,1 @@
-Hej Hej
-
-
-Hej hej 2
-
-Fusse er en cunt
+Er du tilfreds nu?
