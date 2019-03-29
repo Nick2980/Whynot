@@ -14,3 +14,10 @@ Dst = pydst.Dst(lang='da')
 Dst.get_subjects()
 
 #%%
+boligpris_vars = Dst.get_variables(table_id='PRIS112')
+boligpris_vars
+
+#%%
+forprisindex = Dst.get_data(table_id = 'PRIS112', variables={'HOVED':['1005'], 'tid':['*']})
+
+forprisindex.sample(10)
