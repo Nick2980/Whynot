@@ -1,1 +1,2 @@
-Er du tilfreds nu?
+Tabeller fra dst:
+PRIS112: FORBRUGERPRISINDEKS (2015=100) EFTER HOVEDTAL
