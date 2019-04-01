@@ -27,8 +27,22 @@ ejpris_vars
 #%%
 ejpris_vars['values'][1][:10]
 ejpris_vars['values'][2][:10]
-ejpris_vars['values'][3][:10]
+ejpris_vars['values'][3][:]
+
 #%%
-ejprisindex = Dst.get_data(table_id = 'EJ55', variables={'OMRÅDE':['01'], 'EJENDOMSKATE':['2103'], 'TAL':['100'], 'Tid':['*']})
-ejprisindex.sample(10)
+TIDID=ejpris_vars['values'][3][:]
+K4=TIDID[3::4]
+#%%
+K4id = []
+for row in K4:
+    K4id.append(row['id'])
+K4id
+#%%
+K4input=''
+for year in K4id:
+    K4input +=  year + ','
+K4input
+#%%
+ejprisindex = Dst.get_data(table_id = 'EJ55', variables={'OMRÅDE':['01'], 'EJENDOMSKATE':['2103'], 'TAL':['100'], 'Tid':[K4input]})
+ejprisindex
 
