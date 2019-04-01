@@ -22,7 +22,7 @@ rates['PV_Long_rates'] = present_value(rates['Long_rates'])
 #    index = 100
 #    index = value 
 
-print(rates)
-
-#plt.scatter
-#plt.show()
+#print(rates)
+#%%
+value = type(rates['Year'])
+print(value)
