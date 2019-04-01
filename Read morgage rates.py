@@ -36,6 +36,7 @@ present_value_list = present_value(rates['Long_rates'])
 
 rates.append(present_value_list)
 print(rates)
+print(present_value_list)
 
 #plt.scatter
 #plt.show()
