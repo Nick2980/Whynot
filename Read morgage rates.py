@@ -18,9 +18,9 @@ rates = pd.read_excel('Morgagebond_rates.xlsx')
 rates['PV_Long_rates'] = present_value(rates['Long_rates'])
 
 #calculation index value of pv column. Base year 2006
-for PV_Long_rates in enumerate(rates) 
-    index = 100
-    index = value 
+#for PV_Long_rates in enumerate(rates) 
+#    index = 100
+#    index = value 
 
 print(rates)
 
