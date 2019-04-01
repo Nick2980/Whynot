@@ -1,4 +1,5 @@
-def test()
+def test(a = 1):
     return 1
 
-print()
+#%%
+print(test(1))
