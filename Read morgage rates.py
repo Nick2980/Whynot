@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 #%%
 #load rates from excel
-rates = pd.read_excel('Morgagebond_rates.xlsx')
+rates = pd.read_excel('Morgagebond_rates.xlsx', converters={'Year':int})
 
 #%%
 #add column to rates with the present_value of a 30-year annuity
@@ -26,4 +26,6 @@ base_year = rates.iloc[10, 3]
 rates['index'] = rates['PV_Long_rates'] / base_year
 
 print(rates)
+
+
 
