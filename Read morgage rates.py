@@ -17,7 +17,7 @@ rates = pd.read_excel('Morgagebond_rates.xlsx')
 #add column to rates with the present_value of a 30-year annuity
 rates['PV_Long_rates'] = present_value(rates['Long_rates'])
 
-#calculation index value of pv column. Base year 2006
+#calculation index value of pv column. Base year 2009
 #for PV_Long_rates in enumerate(rates) 
 #    index = 100
 #    index = value 
