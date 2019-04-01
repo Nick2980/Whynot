@@ -31,3 +31,4 @@ ejpris_vars['values'][3][:10]
 #%%
 ejprisindex = Dst.get_data(table_id = 'EJ55', variables={'OMRÅDE':['01'], 'EJENDOMSKATE':['2103'], 'TAL':['100'], 'Tid':['*']})
 ejprisindex.sample(10)
+
