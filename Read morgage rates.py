@@ -34,9 +34,12 @@ print(rates['Long_rates'])
 #%%
 present_value_list = present_value(rates['Long_rates'])
 
-rates.append(present_value_list)
+rates['pv'] = present_value(rates['Long_rates'])
+
 print(rates)
-print(present_value_list)
+
+
+
 
 #plt.scatter
 #plt.show()
