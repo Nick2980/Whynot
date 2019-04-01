@@ -10,7 +10,7 @@ def present_value(rate):
     
         y (float): present value of 1 kr. in 30 years at rate x
     """
-    y = (1 - (1 - rate)**-30)/r 
+    y = (1 - (1 - rate)**-30)/rate 
 
     return y
 
