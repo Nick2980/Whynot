@@ -10,7 +10,7 @@ def present_value(rate):
         present value of 1 kr. in 30 years at rate x
     """
     try:
-        return (1 - (1 + rate)**-30)/rate 
+        return (1 - (1 + rate/100)**-30)/rate/100 
 
     except:
         print('Error: Check input')
