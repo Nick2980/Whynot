@@ -23,9 +23,15 @@ rates['PV_Long_rates'] = present_value(rates['Long_rates'])
 base_year = rates.iloc[10, 3]
 
 #Addting index of PV as index with base 2009
-rates['index'] = rates['PV_Long_rates'] / base_year
+rates['Index'] = rates['PV_Long_rates'] / base_year * 100
 
 print(rates)
+
+#%%
+x = rates['Year']
+y = rates['Index']
+plt.plot(x, y)
+plt.show
 
 
 
