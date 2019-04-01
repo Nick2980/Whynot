@@ -15,7 +15,5 @@ def present_value(rate):
     except:
         print('Error: Check input')
 
-#%%
-print(present_value(0.01))
 
 
