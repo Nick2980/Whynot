@@ -74,5 +74,6 @@ samlet2015priser['Consumerpriceindex (2015=100)'] = [x.replace(',', '.') for x i
 samlet2015priser['Priceindex for sold apartements (2006=100)']=samlet2015priser['Priceindex for sold apartements (2006=100)'].astype(float)
 samlet2015priser['Consumerpriceindex (2015=100)']=samlet2015priser['Consumerpriceindex (2015=100)'].astype(float)
 #%%
-samlet2015priser['Inflation adjusted priceindex']= samlet2015priser['Priceindex for sold apartements (2006=100)']/samlet2015priser['Consumerpriceindex (2015=100)']
+samlet2015priser['Priceindex for sold apartements (2015=100)']=samlet2015priser['Priceindex for sold apartements (2006=100)']*100/113.8
+samlet2015priser['Inflation adjusted priceindex']= samlet2015priser['Priceindex for sold apartements (2015=100)']/samlet2015priser['Consumerpriceindex (2015=100)']*100
 samlet2015priser
