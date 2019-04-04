@@ -6,6 +6,9 @@ import numpy as np
 # import of matplot for making graphs later on in the analysis
 import matplotlib.pyplot as plt
 #%%
+#import custom present_value function
+from present_value_function import present_value
+#%%
 # import of dst API functions. Note: requires installation of pip install git+https://github.com/elben10/pydst in terminal(mac)/cmd(windows)
 import pydst
 Dst = pydst.Dst(lang='da')
@@ -77,3 +80,46 @@ samlet2015priser['Consumerpriceindex (2015=100)']=samlet2015priser['Consumerpric
 samlet2015priser['Priceindex for sold apartements (2015=100)']=samlet2015priser['Priceindex for sold apartements (2006=100)']*100/113.8
 samlet2015priser['Inflation adjusted priceindex']= samlet2015priser['Priceindex for sold apartements (2015=100)']/samlet2015priser['Consumerpriceindex (2015=100)']*100
 samlet2015priser
+#%%
+samlet2015priser=samlet2015priser.iloc[7:,]
+samlet2015priser=samlet2015priser.reset_index(drop=True)
+samlet2015priser
+#%%
+#load rates from excel
+rates = pd.read_excel('Morgagebond_rates.xlsx', converters={'Year':int})
+
+#%%
+#add column to rates with the present_value of a 30-year annuity
+rates['PV_Long_rates'] = present_value(rates['Long_rates'])
+rates
+#selecting base year
+#Should be changed to .loc but will not accept .loc('2015',:)
+#%%
+base_year = rates.iloc[16, 3]
+
+#Addting index of PV as index with base 2015
+rates['Index'] = rates['PV_Long_rates'] / base_year * 100
+
+print(rates)
+#%%
+rates=rates.iloc[:20,]
+rates
+#%%
+samlet2015priser['PV index (2015=100)']=rates['Index']
+samlet2015priser
+
+#%%
+x = rates['Year']
+y = rates['Index']
+plt.plot(x, y)
+plt.show
+#%%
+plt.plot(samlet2015priser['Year (Q4)'], samlet2015priser['Inflation adjusted priceindex'], 'b-', label='Apart Index')
+plt.plot(samlet2015priser['Year (Q4)'], samlet2015priser['PV index (2015=100)'], 'g-', label='PV Index')
+plt.legend(loc='best')
+plt.ylabel('Percent')
+plt.xlabel('Year')
+plt.title('Apart vs PV index (2015=100')
+plt.show()
+#%%
+np.corrcoef(samlet2015priser['PV index (2015=100)'], samlet2015priser['Inflation adjusted priceindex'])
