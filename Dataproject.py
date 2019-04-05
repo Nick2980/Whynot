@@ -36,6 +36,7 @@ forprisindex
 ejpris_vars = Dst.get_variables(table_id='EJ55')
 ejpris_vars
 #%%
+ejpris_vars['values'][0][:10]
 ejpris_vars['values'][1][:10]
 ejpris_vars['values'][2][:10]
 ejpris_vars['values'][3][:]
@@ -70,6 +71,7 @@ samlet2015priser
 #%%
 samlet2015priser = samlet2015priser.drop(["HOVED", "Year (average)"], axis=1)
 samlet2015priser
+#%%
 samlet2015priser.dtypes
 #%%
 samlet2015priser['Priceindex for sold apartements (2006=100)'] = [x.replace(',', '.') for x in samlet2015priser['Priceindex for sold apartements (2006=100)']]
@@ -79,10 +81,6 @@ samlet2015priser['Consumerpriceindex (2015=100)']=samlet2015priser['Consumerpric
 #%%
 samlet2015priser['Priceindex for sold apartements (2015=100)']=samlet2015priser['Priceindex for sold apartements (2006=100)']*100/113.8
 samlet2015priser['Inflation adjusted priceindex']= samlet2015priser['Priceindex for sold apartements (2015=100)']/samlet2015priser['Consumerpriceindex (2015=100)']*100
-samlet2015priser
-#%%
-samlet2015priser=samlet2015priser.iloc[7:,]
-samlet2015priser=samlet2015priser.reset_index(drop=True)
 samlet2015priser
 #%%
 #load rates from excel
@@ -100,10 +98,14 @@ base_year = rates.iloc[16, 3]
 #Addting index of PV as index with base 2015
 rates['Index'] = rates['PV_Long_rates'] / base_year * 100
 
-print(rates)
+rates
 #%%
 rates=rates.iloc[:20,]
 rates
+#%%
+samlet2015priser=samlet2015priser.iloc[7:,]
+samlet2015priser=samlet2015priser.reset_index(drop=True)
+samlet2015priser
 #%%
 samlet2015priser['PV index (2015=100)']=rates['Index']
 samlet2015priser
@@ -117,6 +119,7 @@ plt.show
 plt.plot(samlet2015priser['Year (Q4)'], samlet2015priser['Inflation adjusted priceindex'], 'b-', label='Apart Index')
 plt.plot(samlet2015priser['Year (Q4)'], samlet2015priser['PV index (2015=100)'], 'g-', label='PV Index')
 plt.legend(loc='best')
+plt.xticks(['1999K4','2003K4','2008K4','2013K4','2018K4'])
 plt.ylabel('Percent')
 plt.xlabel('Year')
 plt.title('Apart vs PV index (2015=100')
